@@ -99,7 +99,6 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1.setViewportView(savesList);
 
         fixBTN.setText("Fix");
-        fixBTN.setEnabled(false);
         fixBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fixBTNActionPerformed(evt);
@@ -163,50 +162,8 @@ public class Main extends javax.swing.JFrame {
 
     private void fixBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixBTNActionPerformed
         
-        
-        
-   /*     ProcessBuilder   ps=new ProcessBuilder("java", "-jar", "sim.jar", "nogui");
-
-    //From the DOC:  Initially, this property is false, meaning that the 
-    //standard output and error output of a subprocess are sent to two 
-    //separate streams
-    ps.redirectErrorStream(true);
-
-    Process pr = null;  
-        try {
-            pr = ps.start();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    BufferedReader in = new BufferedReader(new 
-
-              InputStreamReader(pr.getInputStream()));
-    String line;
-        try {
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            pr.waitFor();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            in.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-        /**
-        try {
-            Runtime.getRuntime().exec("java -jar sim.jar nogui");
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        Fix.Now();
+  
     }//GEN-LAST:event_fixBTNActionPerformed
 
     private void aboutSimWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutSimWorldActionPerformed
@@ -274,6 +231,10 @@ public class Main extends javax.swing.JFrame {
      */
     public static void message(String MSG){
         JOptionPane.showMessageDialog(null, MSG);
+    }
+    
+    public static void print(String MSG){
+        System.out.println(MSG);
     }
     
     /**
