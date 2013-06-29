@@ -1,6 +1,11 @@
 package com.TunkDesign.McFix.packets;
 
 import com.TunkDesign.McFix.Main;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 
 /**
@@ -52,12 +57,27 @@ public class Fix {
                             {
                                 //Start simulation
                                 Main.print("Starting world simulation..");
+                                
+                                
+                                try {
+                                    Process[] proc = new Process[2];
+                                    proc[0] = new ProcessBuilder("java", "-jar", "sim/sim.jar", "nogui").start();
+                                    Main.print("Fixing world..");
+                                    try {
+                                        Thread.sleep(10000);
+                                    } catch (InterruptedException ex) {
+                                    }
+                                    
+                                    proc[0].destroy();
+                                    
+                                } catch (IOException ioe) {
+                                    ioe.printStackTrace();
+                                }
                                 return null;
                             }
                             
                             protected void done()
                             {
-                        Main.print("World simulation started.");
                                 //Stage 4
                                 SwingWorker<Void, Void> loadWorker = new SwingWorker<Void, Void>()
                                 {
