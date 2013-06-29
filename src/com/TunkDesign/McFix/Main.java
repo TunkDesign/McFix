@@ -1,6 +1,7 @@
 package com.TunkDesign.McFix;
 
 import com.TunkDesign.McFix.packets.Download;
+import com.TunkDesign.McFix.packets.Fix;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -32,6 +33,7 @@ public class Main extends javax.swing.JFrame {
      */
     //Classes
     public Download Download = new Download(this);
+    public Fix Fix = new Fix(this);
     
     //Strings
     public String appData = System.getenv("APPDATA") + "/.minecraft/saves"; //Windows AppData
@@ -97,6 +99,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1.setViewportView(savesList);
 
         fixBTN.setText("Fix");
+        fixBTN.setEnabled(false);
         fixBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fixBTNActionPerformed(evt);
@@ -127,16 +130,16 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jProgressbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(simWorld)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(aboutSimWorld, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fixBTN)))
+                                .addComponent(simWorld)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(aboutSimWorld, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fixBTN)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +163,9 @@ public class Main extends javax.swing.JFrame {
 
     private void fixBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixBTNActionPerformed
         
-        ProcessBuilder   ps=new ProcessBuilder("java", "-jar", "sim.jar", "nogui");
+        
+        
+   /*     ProcessBuilder   ps=new ProcessBuilder("java", "-jar", "sim.jar", "nogui");
 
     //From the DOC:  Initially, this property is false, meaning that the 
     //standard output and error output of a subprocess are sent to two 
@@ -194,7 +199,7 @@ public class Main extends javax.swing.JFrame {
             in.close();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         /**
         try {
@@ -214,6 +219,10 @@ public class Main extends javax.swing.JFrame {
                 + "If you choose to not use it, your character will end up at \n0, 0 with a chance of suffocation.");
     }//GEN-LAST:event_aboutSimWorldActionPerformed
 
+     private void savesListActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
