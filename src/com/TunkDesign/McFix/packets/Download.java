@@ -35,14 +35,12 @@ public class Download {
             private boolean success;
             protected Void doInBackground() throws Exception
             {
-                // Create a directory; all non-existent ancestor directories are
-// automatically created
-success = (new File(m.appPath + "/sim")).mkdirs();
-if (!success) {
-    // Directory creation failed
-}
-        m.jProgressbar.setValue(0);
-        m.DownloadSize = 0;
+                success = (new File(m.appPath + "/sim")).mkdirs();
+                if (!success) {
+                    Main.message("Failed to create directory. Stopping..");
+                }
+                m.jProgressbar.setValue(0);
+                m.DownloadSize = 0;
                 
                 try {
                     
